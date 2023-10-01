@@ -68,10 +68,9 @@ class _HomePageState extends State<HomePage> {
               ),
               const SizedBox(height: 10),
               customInput(
-                textEditingController: encodeKeyTextController,
-                hint: "Enter encode key",
-                keyboardType: TextInputType.number
-              ),
+                  textEditingController: encodeKeyTextController,
+                  hint: "Enter encode key",
+                  keyboardType: TextInputType.number),
               const SizedBox(height: 20),
               customButton(
                 title: "Encrypt",
@@ -89,12 +88,20 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               const SizedBox(height: 20),
-              TextButton(
-                onPressed: () {
-                  Clipboard.setData(ClipboardData(text: encodedText));
-                },
-                child: Text(encodedText),
-              ),
+              if (encodedText.isNotEmpty)
+                TextButton(
+                  onPressed: () {
+                    Clipboard.setData(ClipboardData(text: encodedText));
+                  },
+                  child: SizedBox(
+                    height: 90,
+                    child: Text(
+                      encodedText,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                      overflow: TextOverflow.clip,
+                    ),
+                  ),
+                ),
               const SizedBox(height: 20),
               customInput(
                 textEditingController: decodeTextController,
@@ -102,16 +109,16 @@ class _HomePageState extends State<HomePage> {
               ),
               const SizedBox(height: 10),
               customInput(
-                textEditingController: decodeKeyTextController,
-                hint: "Enter decode key",
-                keyboardType: TextInputType.number
-              ),
+                  textEditingController: decodeKeyTextController,
+                  hint: "Enter decode key",
+                  keyboardType: TextInputType.number),
               const SizedBox(height: 20),
               customButton(
                 title: "Decrypt",
                 backgroundColor: Colors.black,
                 onPressed: () {
-                  if (decodeTextController.text.isNotEmpty && decodeKeyTextController.text.isNotEmpty) {
+                  if (decodeTextController.text.isNotEmpty &&
+                      decodeKeyTextController.text.isNotEmpty) {
                     setState(() {
                       decodedText = CustomCrypto.decode(
                         encodedText: decodeTextController.text,
@@ -122,12 +129,16 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               const SizedBox(height: 20),
-              TextButton(
-                onPressed: () {
-                  Clipboard.setData(ClipboardData(text: decodedText));
-                },
-                child: Text(decodedText),
-              ),
+              if (decodedText.isNotEmpty)
+                TextButton(
+                  onPressed: () {
+                    Clipboard.setData(ClipboardData(text: decodedText));
+                  },
+                  child: Text(
+                    decodedText,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
             ]),
           ),
         ),
@@ -137,7 +148,8 @@ class _HomePageState extends State<HomePage> {
 
   Widget customInput(
       {required TextEditingController textEditingController,
-      required String hint,TextInputType? keyboardType}) {
+      required String hint,
+      TextInputType? keyboardType}) {
     return Container(
       height: 50,
       width: double.infinity,
@@ -155,7 +167,9 @@ class _HomePageState extends State<HomePage> {
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: hint,
+          hintStyle: const TextStyle(fontWeight: FontWeight.bold),
         ),
+        style: const TextStyle(fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -171,7 +185,10 @@ class _HomePageState extends State<HomePage> {
         foregroundColor: Colors.white,
         minimumSize: const Size(double.infinity, 50),
       ),
-      child: Text(title),
+      child: Text(
+        title,
+        style: const TextStyle(fontWeight: FontWeight.bold),
+      ),
     );
   }
 }

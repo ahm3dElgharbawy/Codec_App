@@ -1,5 +1,3 @@
-import 'package:encode_decode/core/logic/password_generator.dart';
-import 'package:encode_decode/features/encryptor/presentation/views/encryptor_view.dart';
 import 'package:encode_decode/features/password_generator/presentation/views/password_generator_view.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +20,7 @@ class BuildCustomDrawer extends StatelessWidget {
           ListTile(
             visualDensity: VisualDensity.compact,
             onTap: () {
+              Navigator.pop(context);
               Navigator.push(
                 context,
                 MaterialPageRoute(

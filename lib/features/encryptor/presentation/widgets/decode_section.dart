@@ -1,4 +1,5 @@
 import 'package:encode_decode/core/widgets/custom_input_field.dart';
+import 'package:encode_decode/core/widgets/custom_text_button.dart';
 import 'package:encode_decode/features/encryptor/cubit/encryptor_cubit.dart';
 import 'package:encode_decode/features/encryptor/presentation/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -35,15 +36,14 @@ class DecodeSection extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             if (state is DecryptSuccess)
-              TextButton(
+              CustomTextButton(
+                text: state.text,
                 onPressed: () {
-                  Clipboard.setData(ClipboardData(text: state.text));
+                  Clipboard.setData(
+                    ClipboardData(text: state.text),
+                  );
                 },
-                child: Text(
-                  state.text,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-              ),
+              )
           ],
         );
       },

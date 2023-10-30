@@ -30,7 +30,7 @@ class CustomInputField extends StatelessWidget {
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: hint,
-          hintStyle: const TextStyle(fontWeight: FontWeight.bold),
+          hintStyle: const TextStyle(fontWeight: FontWeight.w400,color: Colors.grey),
         ),
         style: const TextStyle(fontWeight: FontWeight.bold),
       ),

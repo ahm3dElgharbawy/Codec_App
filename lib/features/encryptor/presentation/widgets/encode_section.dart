@@ -1,4 +1,5 @@
 import 'package:encode_decode/core/widgets/custom_input_field.dart';
+import 'package:encode_decode/core/widgets/custom_text_button.dart';
 import 'package:encode_decode/features/encryptor/presentation/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -36,19 +37,14 @@ class EncodeSection extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             if (state is EncryptSuccess)
-              TextButton(
+              CustomTextButton(
+                text: state.text,
                 onPressed: () {
-                  Clipboard.setData(ClipboardData(text: state.text));
+                  Clipboard.setData(
+                    ClipboardData(text: state.text),
+                  );
                 },
-                child: SizedBox(
-                  height: 90,
-                  child: Text(
-                    state.text,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                    overflow: TextOverflow.clip,
-                  ),
-                ),
-              ),
+              )
           ],
         );
       },

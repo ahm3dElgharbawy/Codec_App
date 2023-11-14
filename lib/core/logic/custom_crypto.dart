@@ -3,7 +3,6 @@ class CustomCrypto {
     if(key == null){
       return "the key should be a number";
     }
-    // key or salts
     List<int> asciCodes = [];
     for (int i = 0; i < text.length; i++) {
       asciCodes.add(text[i].codeUnitAt(0) + key);

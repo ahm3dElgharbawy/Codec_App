@@ -47,7 +47,7 @@ class _PasswordGeneratorViewState extends State<PasswordGeneratorView> {
                   password =
                       PasswordGenerator.generate(int.parse(controller.text));
                 } catch (e) {
-                  password = "not valid length";
+                  password = "not valid input";
                 }
                 setState(() {});
               }

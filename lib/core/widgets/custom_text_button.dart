@@ -9,9 +9,7 @@ class CustomTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {
-        
-      },
+      onPressed: onPressed,
       style: TextButton.styleFrom(minimumSize: Size(double.infinity, 0)),
       child: SizedBox(
         height: 90,
